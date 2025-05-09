@@ -1,0 +1,14 @@
+# Build artifacts
+[Bb]in/
+[Oo]bj/
+
+# Visual Studio folders
+.vs/
+
+# User-specific files
+*.user
+*.suo
+
+# NuGet and other
+packages/
+*.nupkg
