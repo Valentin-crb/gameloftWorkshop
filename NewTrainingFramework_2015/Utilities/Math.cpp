@@ -201,6 +201,9 @@ Vector3 Vector3::Cross(Vector3 & vector)
 	return Vector3(y * vector.z -  z * vector.y, z * vector.x - x * vector.z, x * vector.y - y * vector.x);
 }
 
+Vector3 Vector4::toVector3() {
+	return Vector3(x, y, z);
+}
 //Vector4
 
 GLfloat Vector4::Length()

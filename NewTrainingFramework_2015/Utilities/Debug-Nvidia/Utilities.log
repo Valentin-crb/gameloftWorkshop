@@ -1,19 +1,12 @@
 ﻿cl : command line  warning D9035: option 'Gm' has been deprecated and will be removed in a future release
-  stdafx.cpp
-cl : command line  warning D9035: option 'Gm' has been deprecated and will be removed in a future release
-  TGA.cpp
   Math.cpp
-  esUtil_win.cpp
-  esUtil.cpp
-C:\gameloft workshop\proiect_2015\NewTrainingFramework_2015\Utilities\Math.cpp(10,13): warning C4244: 'return': conversion from 'double' to 'GLfloat', possible loss of data
+C:\Users\curba\repositories\gameloftWorkshop\NewTrainingFramework_2015\Utilities\Math.cpp(10,13): warning C4244: 'return': conversion from 'double' to 'GLfloat', possible loss of data
   (compiling source file '/Math.cpp')
   
-C:\gameloft workshop\proiect_2015\NewTrainingFramework_2015\Utilities\Math.cpp(104,13): warning C4244: 'return': conversion from 'double' to 'GLfloat', possible loss of data
+C:\Users\curba\repositories\gameloftWorkshop\NewTrainingFramework_2015\Utilities\Math.cpp(104,13): warning C4244: 'return': conversion from 'double' to 'GLfloat', possible loss of data
   (compiling source file '/Math.cpp')
   
-C:\gameloft workshop\proiect_2015\NewTrainingFramework_2015\Utilities\Math.cpp(208,13): warning C4244: 'return': conversion from 'double' to 'GLfloat', possible loss of data
+C:\Users\curba\repositories\gameloftWorkshop\NewTrainingFramework_2015\Utilities\Math.cpp(211,13): warning C4244: 'return': conversion from 'double' to 'GLfloat', possible loss of data
   (compiling source file '/Math.cpp')
   
-  esShader.cpp
-  Generating Code...
-  Utilities.vcxproj -> C:\gameloft workshop\proiect_2015\NewTrainingFramework_2015\BIN-Nvidia\Utilities.lib
+  Utilities.vcxproj -> C:\Users\curba\repositories\gameloftWorkshop\NewTrainingFramework_2015\BIN-Nvidia\Utilities.lib

@@ -64,6 +64,7 @@ public:
 	Vector3 Modulate(Vector3 & vector);
 	GLfloat Dot(Vector3 & vector);
 	Vector3 Cross(Vector3 & vector);
+	
 
 	//access to elements
 	GLfloat operator [] (unsigned int idx);
@@ -72,6 +73,7 @@ public:
 	GLfloat x;
 	GLfloat y;
 	GLfloat z;
+	
 };
 
 //Vector4
@@ -117,6 +119,8 @@ public:
 	GLfloat y;
 	GLfloat z;
 	GLfloat w;
+	Vector3 toVector3();
+
 };
 
 //Matrix 4 X 4

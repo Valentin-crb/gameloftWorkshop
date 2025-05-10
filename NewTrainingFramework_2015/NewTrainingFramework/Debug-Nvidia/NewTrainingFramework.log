@@ -1,1 +1,13 @@
-﻿  NewTrainingFramework.vcxproj -> C:\gameloft workshop\proiect_2015\NewTrainingFramework_2015\BIN-Nvidia\NewTrainingFramework.exe
+﻿cl : command line  warning D9035: option 'Gm' has been deprecated and will be removed in a future release
+  NewTrainingFramework.cpp
+C:\Users\curba\repositories\gameloftWorkshop\NewTrainingFramework_2015\NewTrainingFramework\NewTrainingFramework.cpp(17,12): warning C4305: 'initializing': truncation from 'double' to 'float'
+  (compiling source file '/NewTrainingFramework.cpp')
+  
+C:\Users\curba\repositories\gameloftWorkshop\NewTrainingFramework_2015\NewTrainingFramework\NewTrainingFramework.cpp(90,17): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
+  (compiling source file '/NewTrainingFramework.cpp')
+  
+  Camera.cpp
+C:\Users\curba\repositories\gameloftWorkshop\NewTrainingFramework_2015\NewTrainingFramework\Camera.cpp(85,1): error C1010: unexpected end of file while looking for precompiled header. Did you forget to add '#include "stdafx.h"' to your source?
+  Generating Code...
+  Skipping... (no relevant changes detected)
+  Shaders.cpp

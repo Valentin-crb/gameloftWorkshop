@@ -9,6 +9,7 @@
 #include "Shaders.h"
 #include <conio.h>
 #include "Globals.h"
+#include "Camera.h"
 
 #define PI 3.14
 
@@ -17,6 +18,7 @@ float step = 0.1;
 
 GLuint vboId;
 Shaders myShaders;
+Camera camera;
 
 int Init ( ESContext *esContext )
 {
