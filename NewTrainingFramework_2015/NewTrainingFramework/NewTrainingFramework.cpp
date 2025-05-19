@@ -18,7 +18,6 @@ float step = 0.1;
 
 GLuint vboId;
 Shaders myShaders;
-Camera camera;
 
 int Init ( ESContext *esContext )
 {
