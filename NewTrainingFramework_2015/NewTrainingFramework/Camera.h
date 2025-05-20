@@ -19,6 +19,7 @@ public:
 	Vector3 zAxis;
 	Matrix viewMatrix;
 	Matrix worldMatrix;
+	Matrix perspectiveMatrix;
 
 //Metode
 	void moveOx(int sens);
@@ -34,6 +35,5 @@ public:
 //constructori
 	Camera();
 	Camera(Vector3 position, Vector3 target, Vector3 up, GLfloat moveSpeed, GLfloat rotateSpeed, GLfloat nearPlane, GLfloat farPlane, GLfloat fov);
-	
 };
 extern Camera camera;

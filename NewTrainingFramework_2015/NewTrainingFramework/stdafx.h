@@ -10,6 +10,7 @@
 #include <stdio.h>
 #include <tchar.h>
 #include "Camera.h"
+#include "Globals.h"
 
 
 

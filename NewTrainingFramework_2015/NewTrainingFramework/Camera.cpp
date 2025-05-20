@@ -12,6 +12,8 @@ Camera::Camera()
 	rotateSpeed(0.1)
 {
 	updateWorldView();
+	GLfloat aspectRatio = (GLfloat)Globals::screenWidth / Globals::screenHeight;
+	perspectiveMatrix.SetPerspective(fov, aspectRatio, nearPlane, farPlane);
 }
 
 void Camera::updateWorldView() {
