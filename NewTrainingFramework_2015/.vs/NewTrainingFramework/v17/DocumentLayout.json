@@ -47,8 +47,7 @@
               "ViewState": "AgIAAEkAAAAAAAAAAAAgwFMAAAAoAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
               "WhenOpened": "2025-04-12T06:03:36.978Z",
-              "IsPinned": true,
-              "EditorCaption": ""
+              "IsPinned": true
             },
             {
               "$type": "Bookmark",
@@ -77,8 +76,7 @@
               "RelativeToolTip": "Resources\\Shaders\\TriangleShaderVS.vs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAoAAAASAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001001|",
-              "WhenOpened": "2025-05-20T19:28:17.172Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-05-20T19:28:17.172Z"
             },
             {
               "$type": "Document",
@@ -90,8 +88,7 @@
               "RelativeToolTip": "NewTrainingFramework\\stdafx.h",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAwAAAARAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
-              "WhenOpened": "2025-05-19T12:28:41.824Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-05-19T12:28:41.824Z"
             },
             {
               "$type": "Document",
@@ -103,8 +100,7 @@
               "RelativeToolTip": "NewTrainingFramework\\Camera.h",
               "ViewState": "AgIAAAQAAAAAAAAAAAAAACUAAAACAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
-              "WhenOpened": "2025-05-10T07:10:51.553Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-05-10T07:10:51.553Z"
             },
             {
               "$type": "Document",
@@ -116,8 +112,7 @@
               "RelativeToolTip": "Utilities\\Math.cpp",
               "ViewState": "AgIAABoCAAAAAAAAAAAAAAQCAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
-              "WhenOpened": "2025-05-10T08:53:51.744Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-05-10T08:53:51.744Z"
             }
           ]
         }
