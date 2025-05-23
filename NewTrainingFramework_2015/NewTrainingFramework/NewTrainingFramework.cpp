@@ -26,9 +26,9 @@ int Init ( ESContext *esContext )
 	//triangle data (heap)
 	Vertex verticesData[3];
 
-	verticesData[0].pos.x =  0.0f;  verticesData[0].pos.y =  0.5f;  verticesData[0].pos.z =  0.0f;
-	verticesData[1].pos.x = -0.5f;  verticesData[1].pos.y = -0.5f;  verticesData[1].pos.z =  0.0f;
-	verticesData[2].pos.x =  0.5f;  verticesData[2].pos.y = -0.5f;  verticesData[2].pos.z =  0.0f;
+	verticesData[0].pos.x =  0.0f;  verticesData[0].pos.y =  0.5f;  verticesData[0].pos.z =  -1.0f;
+	verticesData[1].pos.x = -0.5f;  verticesData[1].pos.y = -0.5f;  verticesData[1].pos.z =  -1.0f;
+	verticesData[2].pos.x =  0.5f;  verticesData[2].pos.y = -0.5f;  verticesData[2].pos.z =  -1.0f;
 
 	verticesData[0].color.x = 1.0f;  verticesData[0].color.y = 0.0f;  verticesData[0].color.z = 0.0f;
 	verticesData[1].color.x = 0.0f;  verticesData[1].color.y = 1.0f;  verticesData[1].color.z = 0.0f;
@@ -52,7 +52,7 @@ void Draw ( ESContext *esContext )
 	glUseProgram(myShaders.program);
 
 	glBindBuffer(GL_ARRAY_BUFFER, vboId);
-
+	
 	
 	if(myShaders.positionAttribute != -1)
 	{
@@ -67,11 +67,17 @@ void Draw ( ESContext *esContext )
 	}
 
 	Matrix mRotation;
+	Matrix MVP;
 	mRotation.SetRotationZ(angle);
+	MVP = camera.perspectiveMatrix * camera.viewMatrix * camera.worldMatrix;
 
 	if (myShaders.matrixUniform != -1)
 	{
 		glUniformMatrix4fv(myShaders.matrixUniform, 1, GL_FALSE, (float*)(&mRotation.m[0][0]));
+	}
+
+	if (myShaders.mvpUniform != -1) {
+		glUniformMatrix4fv(myShaders.mvpUniform, 1, GL_FALSE, (float*)&MVP.m[0][0]);
 	}
 
 	glDrawArrays(GL_TRIANGLES, 0, 3);
@@ -79,6 +85,7 @@ void Draw ( ESContext *esContext )
 	glBindBuffer(GL_ARRAY_BUFFER, 0);
 
 	eglSwapBuffers ( esContext->eglDisplay, esContext->eglSurface );
+
 }
 
 void Update ( ESContext *esContext, float deltaTime )

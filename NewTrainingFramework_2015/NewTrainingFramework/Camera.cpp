@@ -6,8 +6,8 @@ Camera::Camera()
 	target(Vector3(0,0,0)),
 	up(Vector3(0,1,0)),
 	fov(45.0f),
-	nearPlane(0.2),
-	farPlane(10),
+	nearPlane(0.2f),
+	farPlane(10.0f),
 	moveSpeed(0.1),
 	rotateSpeed(0.1)
 {
@@ -68,24 +68,24 @@ void Camera::moveOz(int sens) {
 	updateWorldView();
 }
 
-void Camera::rotateOy(int sens) {
-	Matrix mRotateOY;
-	mRotateOY.SetRotationY(rotateSpeed * deltaTime * sens);
-	Vector4 localTarget = Vector4(0.0f, 0.0f, -(target - position).Length(), 1.0f);
-	Vector4 rotatedTarget = localTarget * mRotateOY;
-	target = (rotatedTarget * worldMatrix).toVector3();
-	updateWorldView();
-}
-
 void Camera::rotateOx(int sens) {
 	Matrix mRotateOX;
 	mRotateOX.SetRotationX(rotateSpeed * deltaTime * sens);
 	Vector4 localTarget = Vector4(0.0f, 0.0f, -(target - position).Length(), 1.0f);
 	Vector4 rotatedTarget = localTarget * mRotateOX;
-	Vector4 localUp;
+	Vector4 localUp(0.0f, 1.0f, 0.0f, 0.0f);
 	Vector4 rotatedLocalUp = localUp * mRotateOX;
 	up = (rotatedLocalUp * worldMatrix).toVector3();
 	up = up.Normalize();
+	target = (rotatedTarget * worldMatrix).toVector3();
+	updateWorldView();
+}
+
+void Camera::rotateOy(int sens) {
+	Matrix mRotateOY;
+	mRotateOY.SetRotationY(rotateSpeed * deltaTime * sens);
+	Vector4 localTarget = Vector4(0.0f, 0.0f, -(target - position).Length(), 1.0f);
+	Vector4 rotatedTarget = localTarget * mRotateOY;
 	target = (rotatedTarget * worldMatrix).toVector3();
 	updateWorldView();
 }

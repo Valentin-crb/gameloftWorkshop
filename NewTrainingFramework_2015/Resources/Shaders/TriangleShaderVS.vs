@@ -8,6 +8,6 @@ void main()
 {
 v_color = a_color;
 vec4 posL = vec4(a_posL, 1.0);
-gl_Position = uMVP*posL;
+gl_Position = uMVP*vec4(a_posL, 1.0);
 }
    
