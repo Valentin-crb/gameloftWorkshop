@@ -1,4 +1,7 @@
 #include "stdafx.h"
+#include "Camera.h"
+#include "Globals.h"
+#include "Math.h"
 
 Camera camera;
 Camera::Camera()
@@ -20,7 +23,7 @@ void Camera::updateWorldView() {
 	updateAxes();
 	Matrix T; T.SetIdentity();
 	Matrix R; R.SetZero();
-	Matrix Rt; Rt = R.Transpose();
+	Matrix Rt; 
 	Matrix Tinv; Tinv.SetIdentity();
 	R.m[0][0] = xAxis.x; R.m[0][1] = xAxis.y; R.m[0][2] = xAxis.z;
 	R.m[1][0] = yAxis.x; R.m[1][1] = yAxis.y; R.m[1][2] = yAxis.z;
@@ -29,6 +32,7 @@ void Camera::updateWorldView() {
 	T.m[0][3] = position.x; T.m[1][3] = position.y; T.m[2][3] = position.z;
 	Tinv.m[0][3] = -position.x; Tinv.m[1][3] = -position.y; Tinv.m[2][3] = -position.z;
 	worldMatrix = R * T;
+	Rt = R.Transpose();
 	viewMatrix = Rt * Tinv;
 }
 

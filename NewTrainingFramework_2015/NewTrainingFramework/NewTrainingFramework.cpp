@@ -69,7 +69,8 @@ void Draw ( ESContext *esContext )
 	Matrix mRotation;
 	Matrix MVP;
 	mRotation.SetRotationZ(angle);
-	MVP = camera.perspectiveMatrix * camera.viewMatrix * camera.worldMatrix;
+	
+	MVP = camera.worldMatrix ;
 
 	if (myShaders.matrixUniform != -1)
 	{
