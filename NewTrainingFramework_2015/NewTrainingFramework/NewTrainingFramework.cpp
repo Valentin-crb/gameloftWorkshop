@@ -11,7 +11,7 @@
 #include "Globals.h"
 #include "Camera.h"
 
-#define PI 3.14
+
 
 float angle = 0;
 float step = 0.1;
@@ -26,9 +26,9 @@ int Init ( ESContext *esContext )
 	//triangle data (heap)
 	Vertex verticesData[3];
 
-	verticesData[0].pos.x =  0.0f;  verticesData[0].pos.y =  0.5f;  verticesData[0].pos.z =  -1.0f;
-	verticesData[1].pos.x = -0.5f;  verticesData[1].pos.y = -0.5f;  verticesData[1].pos.z =  -1.0f;
-	verticesData[2].pos.x =  0.5f;  verticesData[2].pos.y = -0.5f;  verticesData[2].pos.z =  -1.0f;
+	verticesData[0].pos.x =  0.0f;  verticesData[0].pos.y =  0.5f;  verticesData[0].pos.z =  0.0f;
+	verticesData[1].pos.x = -0.5f;  verticesData[1].pos.y = -0.5f;  verticesData[1].pos.z =  0.0f;
+	verticesData[2].pos.x =  0.5f;  verticesData[2].pos.y = -0.5f;  verticesData[2].pos.z =  0.0f;
 
 	verticesData[0].color.x = 1.0f;  verticesData[0].color.y = 0.0f;  verticesData[0].color.z = 0.0f;
 	verticesData[1].color.x = 0.0f;  verticesData[1].color.y = 1.0f;  verticesData[1].color.z = 0.0f;
@@ -70,7 +70,7 @@ void Draw ( ESContext *esContext )
 	Matrix MVP;
 	mRotation.SetRotationZ(angle);
 	
-	MVP = camera.worldMatrix ;
+	MVP = camera.viewMatrix * camera.perspectiveMatrix;
 
 	if (myShaders.matrixUniform != -1)
 	{

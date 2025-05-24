@@ -1,6 +1,8 @@
 #pragma once
 #include "../Utilities/utilities.h"
 
+#define PI 3.14
+
 class Camera
 {
 public:

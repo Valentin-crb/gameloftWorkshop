@@ -3,12 +3,14 @@
 #include "Globals.h"
 #include "Math.h"
 
+#define PI 3.14
+
 Camera camera;
 Camera::Camera()
 	: position(Vector3(0, 0, -1)),
 	target(Vector3(0,0,0)),
 	up(Vector3(0,1,0)),
-	fov(45.0f),
+	fov(PI/4),
 	nearPlane(0.2f),
 	farPlane(10.0f),
 	moveSpeed(0.1),
@@ -21,19 +23,17 @@ Camera::Camera()
 
 void Camera::updateWorldView() {
 	updateAxes();
-	Matrix T; T.SetIdentity();
+	Matrix T; T.SetTranslation(position);
 	Matrix R; R.SetZero();
 	Matrix Rt; 
-	Matrix Tinv; Tinv.SetIdentity();
+	Matrix Tinv; Tinv.SetTranslation(-position);
 	R.m[0][0] = xAxis.x; R.m[0][1] = xAxis.y; R.m[0][2] = xAxis.z;
 	R.m[1][0] = yAxis.x; R.m[1][1] = yAxis.y; R.m[1][2] = yAxis.z;
 	R.m[2][0] = zAxis.x; R.m[2][1] = zAxis.y; R.m[2][2] = zAxis.z;
 	R.m[3][3] = 1.0f;
-	T.m[0][3] = position.x; T.m[1][3] = position.y; T.m[2][3] = position.z;
-	Tinv.m[0][3] = -position.x; Tinv.m[1][3] = -position.y; Tinv.m[2][3] = -position.z;
 	worldMatrix = R * T;
 	Rt = R.Transpose();
-	viewMatrix = Rt * Tinv;
+	viewMatrix =  Tinv*Rt;
 }
 
 void Camera::updateAxes() {
