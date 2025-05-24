@@ -15,6 +15,7 @@
 
 float angle = 0;
 float step = 0.1;
+float totalTime = 0;
 
 GLuint vboId;
 Shaders myShaders;
@@ -66,15 +67,15 @@ void Draw ( ESContext *esContext )
 		glVertexAttribPointer(myShaders.colorAttribute, 3, GL_FLOAT, GL_FALSE, sizeof(Vertex), (void*)(sizeof(Vector3)));
 	}
 
-	Matrix mRotation;
+	Matrix modelMatrix;
 	Matrix MVP;
-	mRotation.SetRotationZ(angle);
+	modelMatrix.SetRotationZ(angle);
 	
-	MVP = camera.viewMatrix * camera.perspectiveMatrix;
+	MVP = modelMatrix* camera.viewMatrix * camera.perspectiveMatrix;
 
 	if (myShaders.matrixUniform != -1)
 	{
-		glUniformMatrix4fv(myShaders.matrixUniform, 1, GL_FALSE, (float*)(&mRotation.m[0][0]));
+		glUniformMatrix4fv(myShaders.matrixUniform, 1, GL_FALSE, (float*)(&modelMatrix.m[0][0]));
 	}
 
 	if (myShaders.mvpUniform != -1) {
@@ -91,16 +92,60 @@ void Draw ( ESContext *esContext )
 
 void Update ( ESContext *esContext, float deltaTime )
 {
-	angle += step;
-	if (angle > 2 * PI)
-	{
-		angle = angle - 2 * PI;
+	
+	totalTime += deltaTime;
+	if (totalTime > Globals::frameTime) {
+		camera.deltaTime = Globals::frameTime;
+		totalTime -= Globals::frameTime;
+		//angle += step;
+		//if (angle > 2 * PI)
+			//angle = angle - 2 * PI;
 	}
 }
 
 void Key ( ESContext *esContext, unsigned char key, bool bIsPressed)
 {
-	
+    //if (bIsPressed)
+		switch (key){
+		case 'w': case 'W':
+			camera.moveOz(-1);
+			break;
+		case 's': case 'S':
+			camera.moveOz(1);
+			break;
+		case 'a': case 'A':
+			camera.moveOx(1);
+			break;
+		case 'd': case 'D':
+			camera.moveOx(-1);
+			break;
+		case 'q': case 'Q':
+			camera.moveOy(1);
+			break;
+		case 'e': case 'E':
+			camera.moveOy(-1);
+			break;
+
+		case VK_UP:
+			camera.rotateOx(1);
+			break;
+		case VK_DOWN:
+			camera.rotateOx(-1);
+			break;
+		case VK_LEFT:
+			camera.rotateOy(-1);
+			break;
+		case VK_RIGHT:
+			camera.rotateOy(1);
+			break;
+		case 'o': case 'O':
+			camera.rotateOz(-1);
+			break;
+		case 'p': case 'P':
+			camera.rotateOz(1);
+			break;
+		}
+		
 }
 
 void CleanUp()

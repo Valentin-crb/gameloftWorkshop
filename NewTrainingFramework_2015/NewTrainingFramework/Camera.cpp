@@ -13,8 +13,8 @@ Camera::Camera()
 	fov(PI/4),
 	nearPlane(0.2f),
 	farPlane(10.0f),
-	moveSpeed(0.1),
-	rotateSpeed(0.1)
+	moveSpeed(1.5f),
+	rotateSpeed(1.0f)
 {
 	updateWorldView();
 	GLfloat aspectRatio = (GLfloat)Globals::screenWidth / Globals::screenHeight;
@@ -55,7 +55,7 @@ void Camera::moveOx(int sens) {
 void Camera::moveOy(int sens) {
 	Vector3 forward;
 	Vector3 vectorDeplasare;
-	forward = xAxis * sens;
+	forward = yAxis * sens;
 	vectorDeplasare = forward * moveSpeed * deltaTime;
 	position += vectorDeplasare;
 	target += vectorDeplasare;
@@ -65,7 +65,7 @@ void Camera::moveOy(int sens) {
 void Camera::moveOz(int sens) {
 	Vector3 forward;
 	Vector3 vectorDeplasare;
-	forward = xAxis * sens;
+	forward = zAxis * sens;
 	vectorDeplasare = forward * moveSpeed * deltaTime;
 	position += vectorDeplasare;
 	target += vectorDeplasare;
@@ -101,4 +101,7 @@ void Camera::rotateOz(int sens) {
 	Vector4 rotatedLocalUp = localUp * mRotateOZ;
 	up = rotatedLocalUp.toVector3().Normalize();
 	updateWorldView();
+}
+void Camera::setDeltaTime(GLfloat dt) {
+	deltaTime = dt;
 }

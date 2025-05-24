@@ -32,7 +32,7 @@ public:
 	void rotateOz(int sens);
 	void updateAxes();
 	void updateWorldView();
-	void setDeltaTime();
+	void setDeltaTime(GLfloat dt);
 
 //constructori
 	Camera();
