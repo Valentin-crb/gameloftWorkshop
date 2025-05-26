@@ -20,6 +20,7 @@ float totalTime = 0;
 GLuint vboId;
 GLuint lineVboId;
 Shaders myShaders;
+Shaders lineShader;
 
 int Init ( ESContext *esContext )
 {
@@ -59,7 +60,8 @@ int Init ( ESContext *esContext )
 	glBindBuffer(GL_ARRAY_BUFFER, 0);
 
 	//creation of shaders and program 
-	return myShaders.Init("../Resources/Shaders/TriangleShaderVS.vs", "../Resources/Shaders/TriangleShaderFS.fs");
+	return lineShader.Init("../Resources/Shaders/LineShaderVS.vs", "../Resources/Shaders/LineShaderFS.fs") + myShaders.Init("../Resources/Shaders/TriangleShaderVS.vs", "../Resources/Shaders/TriangleShaderFS.fs");
+	
 
 }
 
@@ -88,7 +90,7 @@ void Draw ( ESContext *esContext )
 	Matrix MVP;
 	modelMatrix.SetRotationZ(angle);
 	
-	MVP = modelMatrix* camera.viewMatrix * camera.perspectiveMatrix;
+	MVP = modelMatrix * camera.viewMatrix * camera.perspectiveMatrix;
 
 	if (myShaders.matrixUniform != -1)
 	{
@@ -100,6 +102,16 @@ void Draw ( ESContext *esContext )
 	}
 
 	glDrawArrays(GL_TRIANGLES, 0, 6);
+
+	glUseProgram(lineShader.program);
+	glBindBuffer(GL_ARRAY_BUFFER, lineVboId);
+
+	if (lineShader.positionAttribute != -1) {
+		glEnableVertexAttribArray(lineShader.positionAttribute);
+		glVertexAttribPointer(lineShader.positionAttribute, 3, GL_FLOAT,GL_FALSE, sizeof(Vertex), 0);
+	}
+
+	glDrawArrays(GL_LINES, 0, 2);
 
 	glBindBuffer(GL_ARRAY_BUFFER, 0);
 
