@@ -2,6 +2,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 //#include <GLES2/gl2.h>
+#include "MouseEnums.h"
 #include <GLES2/gl2.h>
 #include <EGL/egl.h>
 #include "esUtil_win.h"
@@ -176,6 +177,10 @@ void ESUTIL_API esRegisterKeyFunc ( ESContext *esContext,
    esContext->keyFunc = keyFunc;
 }
 
+void ESUTIL_API esRegisterMouseFunc(ESContext* esContext,
+    void (ESCALLBACK* mouseFunc) (ESContext*, MouseButtons btn, MouseEvents event, int x, int y)) {
+    esContext->mouseFunc = mouseFunc;
+}
 
 
 // esLogMessage()

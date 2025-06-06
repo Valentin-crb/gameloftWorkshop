@@ -1,6 +1,8 @@
 #pragma once
+#include "MouseEnums.h"
 #include <GLES2/gl2.h>
 #include <EGL/egl.h>
+
 
 //  Macros
 
@@ -48,6 +50,7 @@ public:
    void (ESCALLBACK *drawFunc) ( ESContext * );
    void (ESCALLBACK *keyFunc) ( ESContext *, unsigned char, bool );
    void (ESCALLBACK *updateFunc) ( ESContext *, float deltaTime );
+   void (ESCALLBACK* mouseFunc) (ESContext*, MouseButtons btn, MouseEvents event, int x, int y);
 };
 
 
@@ -105,6 +108,9 @@ void ESUTIL_API esRegisterKeyFunc ( ESContext *esContext,
 /// \brief Log a message to the debug output for the platform
 /// \param formatStr Format string for error log.  
 //
+void ESUTIL_API esRegisterMouseFunc(ESContext* esContext,
+     void (ESCALLBACK* mouseFunc) (ESContext*, MouseButtons btn, MouseEvents event, int x, int y));
+
 void ESUTIL_API esLogMessage ( const char *formatStr, ... );
 
 //
@@ -125,16 +131,4 @@ GLuint ESUTIL_API esLoadShader ( GLenum type, char * filename);
 /// \return A new program object linked with the vertex/fragment shader pair, 0 on failure
 //
 GLuint ESUTIL_API esLoadProgram ( GLuint vertexShader, GLuint fragmentShader );
-
-
-
-
-
-
-
-
-
-
-
-
 

@@ -177,6 +177,15 @@ void Key ( ESContext *esContext, unsigned char key, bool bIsPressed)
 		
 }
 
+void Mouse(ESContext* esContext, MouseButtons btn, MouseEvents event, int x, int y) {
+	if (btn == LEFT_BUTTON && event == BTN_DOWN) {
+		if (x < Globals::screenWidth / 2)
+			camera.rotateOz(-1);
+		else
+			camera.rotateOz(1);
+	}
+}
+
 void CleanUp()
 {
 	glDeleteBuffers(1, &vboId);
@@ -199,6 +208,7 @@ int _tmain(int argc, _TCHAR* argv[])
 	esRegisterDrawFunc ( &esContext, Draw );
 	esRegisterUpdateFunc ( &esContext, Update );
 	esRegisterKeyFunc ( &esContext, Key);
+	esRegisterMouseFunc(&esContext, Mouse);
 
 	esMainLoop ( &esContext );
 

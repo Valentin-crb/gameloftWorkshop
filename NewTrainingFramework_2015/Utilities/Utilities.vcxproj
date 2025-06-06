@@ -152,6 +152,7 @@
     <ClCompile Include="TGA.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="..\NewTrainingFramework\MouseEnums.h" />
     <ClInclude Include="esUtil.h" />
     <ClInclude Include="esUtil_win.h" />
     <ClInclude Include="Math.h" />

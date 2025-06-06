@@ -1,6 +1,7 @@
 #include "stdafx.h"
 #include <windows.h>
 #include "esUtil.h"
+#include <windowsx.h>
 
 
 
@@ -46,7 +47,16 @@ LRESULT WINAPI ESWindowProc ( HWND hWnd, UINT uMsg, WPARAM wParam, LPARAM lParam
 				  esContext->keyFunc ( esContext, (unsigned char) wParam, false );
 		  }
 		  break;
-         
+
+      case WM_LBUTTONDOWN:
+      {
+          ESContext *esContext = (ESContext*)(LONG_PTR) GetWindowLongPtr(hWnd, GWL_USERDATA);
+
+          if (esContext && esContext->mouseFunc)
+              esContext->mouseFunc(esContext, LEFT_BUTTON, BTN_DOWN, GET_X_LPARAM(lParam), GET_Y_LPARAM(lParam));
+      }
+      break;
+
       default: 
          lRet = DefWindowProc (hWnd, uMsg, wParam, lParam); 
          break; 
